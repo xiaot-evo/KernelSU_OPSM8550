@@ -11,7 +11,10 @@ jobs:
         LLVM: "1"
         LLVM_IAS: "1"
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: write
+      actions: read
+      checks: read
     steps:
       - uses: actions/checkout@v4
 
@@ -78,7 +81,7 @@ jobs:
           git clone https://github.com/osm0sis/AnyKernel3.git
 
           cp sm8550/out/arch/arm64/boot/Image AnyKernel3/Image
-          cp sm8550/out/arch/arm64/boot/Image ../Image
+          cp sm8550/out/arch/arm64/boot/Image ./Image
           cd AnyKernel3
 
           zip -r9 ../KowSU.zip * -x .git README.md *placeholder

@@ -69,7 +69,9 @@ jobs:
           curl -LSs "https://raw.githubusercontent.com/KOWX712/KernelSU/main/kernel/setup.sh" | bash -s master
           
           touch ./.scmversion
-
+          
+          echo "CONFIG_LTO_CLANG_THIN=y" >> arch/arm64/configs/vendor/oplus/kalama_GKI.config
+          
           make O=out gki_defconfig vendor/kalama_GKI.config vendor/oplus/kalama_GKI.config vendor/debugfs.config
           make -j2 O=out
 

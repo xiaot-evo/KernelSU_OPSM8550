@@ -136,6 +136,9 @@ jobs:
           touch ./.scmversion
           
           make O=out gki_defconfig vendor/kalama_GKI.config vendor/oplus/kalama_GKI.config vendor/debugfs.config
+          sed -i "s|CONFIG_KSU_SUSFS_SPOOF_UNAME=y|CONFIG_KSU_SUSFS_SPOOF_UNAME=n|" out/.config
+          echo "CONFIG_TMPFS_XATTR=y" >> out/.config
+          
           make -j2 O=out
 
       - name: Make AnyKernel3
